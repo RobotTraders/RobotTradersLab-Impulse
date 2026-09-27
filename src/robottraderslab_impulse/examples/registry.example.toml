@@ -1,0 +1,3 @@
+[[bot]]
+config = "impulse-bot-example/impulse-bot-example.toml"
+timeframes = ["1h", "2h", "4h"]
