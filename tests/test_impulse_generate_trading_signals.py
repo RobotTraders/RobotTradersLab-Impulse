@@ -1,12 +1,12 @@
 import numpy as np
 import pandas as pd
 import pytest
-from robottraderslab_impulse.impulse_indicator import compute_signals
 
 from robottraderslab import Symbol
 from robottraderslab.exceptions import MissingOhlcvDataError
 from robottraderslab.indicators import MAType
 from robottraderslab.strategies import OHLCVs, TradingMode
+from robottraderslab_impulse.impulse_indicator import compute_signals
 
 BTC = Symbol.create("BTC/USDT:USDT")
 TIMEFRAME = "1d"

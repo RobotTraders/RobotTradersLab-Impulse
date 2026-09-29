@@ -1,7 +1,7 @@
 import numpy as np
-from robottraderslab_impulse.chart_indicators import get_lightweight_chart_indicators
 
 from robottraderslab.strategies import Candles
+from robottraderslab_impulse.chart_indicators import get_lightweight_chart_indicators
 
 CLOSES = np.array([100.0 + i * 2.0 for i in range(250)])
 CANDLES = Candles(

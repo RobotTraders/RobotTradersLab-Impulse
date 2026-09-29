@@ -2,12 +2,12 @@ import asyncio
 from collections.abc import Callable
 
 import pytest
-from robottraderslab_impulse import ImpulseStrategy
 
 from robottraderslab import Symbol
 from robottraderslab.exceptions import StrategyCriticalError
 from robottraderslab.strategies import StrategyRequirements
 from robottraderslab.strategies.futures import MarginMode, MarginSettings
+from robottraderslab_impulse import ImpulseStrategy
 
 
 def _profile(tag: str, stop_loss_pct: float) -> dict:

@@ -1,7 +1,7 @@
 import numpy as np
-from robottraderslab_impulse.impulse_indicator import ImpulseSignals, compute_signals
 
 from robottraderslab.indicators import MAType
+from robottraderslab_impulse.impulse_indicator import ImpulseSignals, compute_signals
 
 TREND_LENGTH = 10
 

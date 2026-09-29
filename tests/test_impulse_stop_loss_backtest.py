@@ -5,8 +5,6 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-from robottraderslab_impulse import ImpulseStrategy
-from robottraderslab_impulse.profile_config import ProfileConfig
 
 from robottraderslab import Symbol
 from robottraderslab.backtester.backtester import Backtester
@@ -18,6 +16,8 @@ from robottraderslab.backtester.simulator import (
 from robottraderslab.ohlcv_provider import CSVOHLCVProvider
 from robottraderslab.strategies import OHLCVs, TradingMode, TradingSystem
 from robottraderslab.strategies.futures import FuturesAccount
+from robottraderslab_impulse import ImpulseStrategy
+from robottraderslab_impulse.profile_config import ProfileConfig
 
 BTC = Symbol.create("BTC/USDT:USDT")
 TIMEFRAME = "1d"
