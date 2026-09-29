@@ -1,12 +1,11 @@
-from robottraderslab_impulse.position_orders import wanted_entry_side, wants_exit
-from robottraderslab_impulse.profile_config import ProfileConfig
-from robottraderslab_impulse.profile_snapshot import ProfileSnapshot
-
 from robottraderslab.strategies import (
     PositionSide,
     TrackedPosition,
 )
 from robottraderslab.strategies.futures import TotalBalanceRatio
+from robottraderslab_impulse.position_orders import wanted_entry_side, wants_exit
+from robottraderslab_impulse.profile_config import ProfileConfig
+from robottraderslab_impulse.profile_snapshot import ProfileSnapshot
 
 
 def _profile(**overrides) -> ProfileConfig:

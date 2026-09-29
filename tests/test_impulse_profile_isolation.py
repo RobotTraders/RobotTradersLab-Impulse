@@ -3,7 +3,6 @@ from datetime import datetime
 
 import pandas as pd
 import pytest
-from robottraderslab_impulse import ImpulseStrategy
 
 from robottraderslab import Symbol
 from robottraderslab.strategies import (
@@ -20,6 +19,7 @@ from robottraderslab.strategies.futures import (
     MarginMode,
     MarginSettings,
 )
+from robottraderslab_impulse import ImpulseStrategy
 
 BTC = Symbol.create("BTC/USDT:USDT")
 ETH = Symbol.create("ETH/USDT:USDT")

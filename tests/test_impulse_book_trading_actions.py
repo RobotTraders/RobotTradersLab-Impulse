@@ -5,7 +5,6 @@ from unittest.mock import Mock
 import numpy as np
 import pandas as pd
 import pytest
-from robottraderslab_impulse import ImpulseStrategy
 
 from robottraderslab import Symbol
 from robottraderslab.strategies import (
@@ -32,6 +31,7 @@ from robottraderslab.strategies.futures import (
     SetMarginModeAction,
     UpdatePositionStopLossAction,
 )
+from robottraderslab_impulse import ImpulseStrategy
 
 BTC = Symbol.create("BTC/USDT:USDT")
 ACCOUNT_NAME = "test"

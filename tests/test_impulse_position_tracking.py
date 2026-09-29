@@ -1,13 +1,13 @@
 import pytest
+
+from robottraderslab import Symbol
+from robottraderslab.strategies import profile_tag
+from robottraderslab.strategies.futures import TotalBalanceRatio
 from robottraderslab_impulse.position_tracking import (
     tags_by_profile_id,
     tracked_symbols,
 )
 from robottraderslab_impulse.profile_config import ProfileConfig
-
-from robottraderslab import Symbol
-from robottraderslab.strategies import profile_tag
-from robottraderslab.strategies.futures import TotalBalanceRatio
 
 
 @pytest.fixture

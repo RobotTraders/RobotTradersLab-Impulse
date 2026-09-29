@@ -1,5 +1,4 @@
 import pytest
-from robottraderslab_impulse.profile_config import ProfileConfig
 
 from robottraderslab.exceptions import StrategyCriticalError
 from robottraderslab.indicators import MAType
@@ -7,6 +6,7 @@ from robottraderslab.strategies.futures import (
     MarginMode,
     TotalBalanceRatio,
 )
+from robottraderslab_impulse.profile_config import ProfileConfig
 
 
 class TestDirectionFlags:
