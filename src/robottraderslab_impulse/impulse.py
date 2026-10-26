@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import ClassVar
 
 from robottraderslab import Symbol, TimeFrame
-from robottraderslab.exceptions import StrategyCriticalError
+from robottraderslab.exceptions import BotCriticalError
 from robottraderslab.strategies import (
     AccountSnapshots,
     BookKeeper,
@@ -41,7 +41,7 @@ class ImpulseStrategy(ProfileStrategy[ProfileConfig]):
     async def setup(self, requirements: StrategyRequirements) -> None:
         """
         Raises:
-            StrategyCriticalError: If a profile's tag is too long, or two
+            BotCriticalError: If a profile's tag is too long, or two
                 profiles on the same symbol resolve to the same tag or disagree
                 on stop_loss_pct, leverage or margin_mode.
         """
@@ -167,7 +167,7 @@ def _validate_stop_loss_agreement(profiles: Sequence[ProfileConfig]) -> None:
         )
     for symbol, percentages in percentages_by_symbol.items():
         if len(percentages) > 1:
-            raise StrategyCriticalError(
+            raise BotCriticalError(
                 f"Profiles on {symbol} set conflicting stop_loss_pct values. A symbol "
                 f"has a single net position with one stop-loss, so stacked profiles "
                 f"must all use the same stop_loss_pct (or all leave it unset)."
@@ -182,7 +182,7 @@ def _margin_targets(profiles: Sequence[ProfileConfig]) -> dict[Symbol, MarginSet
         )
         declared = targets.setdefault(profile.symbol, wanted)
         if declared != wanted:
-            raise StrategyCriticalError(
+            raise BotCriticalError(
                 f"Profiles on {profile.symbol} set conflicting leverage or "
                 f"margin_mode values. A symbol trades at one leverage in one "
                 f"margin mode, so stacked profiles must all use the same ones."

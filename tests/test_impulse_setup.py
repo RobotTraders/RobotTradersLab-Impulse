@@ -4,7 +4,7 @@ from collections.abc import Callable
 import pytest
 
 from robottraderslab import Symbol
-from robottraderslab.exceptions import StrategyCriticalError
+from robottraderslab.exceptions import BotCriticalError
 from robottraderslab.strategies import StrategyRequirements
 from robottraderslab.strategies.futures import MarginMode, MarginSettings
 from robottraderslab_impulse import ImpulseStrategy
@@ -154,7 +154,7 @@ class TestStopLossValidation:
             [_profile("a", stop_loss_pct=0.05), _profile("b", stop_loss_pct=0.10)]
         )
 
-        with pytest.raises(StrategyCriticalError, match="stop_loss_pct"):
+        with pytest.raises(BotCriticalError, match="stop_loss_pct"):
             asyncio.run(strategy.setup(StrategyRequirements()))
 
     def test_matching_stop_loss_pct_on_same_symbol_allowed(self, make_strategy):
@@ -172,7 +172,7 @@ class TestStopLossValidation:
             [_profile("a", stop_loss_pct=0.05), _profile("b", stop_loss_pct=None)]
         )
 
-        with pytest.raises(StrategyCriticalError, match="stop_loss_pct"):
+        with pytest.raises(BotCriticalError, match="stop_loss_pct"):
             asyncio.run(strategy.setup(StrategyRequirements()))
 
 
@@ -205,7 +205,7 @@ class TestMarginTargets:
             ]
         )
 
-        with pytest.raises(StrategyCriticalError, match="BTC/USDT:USDT"):
+        with pytest.raises(BotCriticalError, match="BTC/USDT:USDT"):
             asyncio.run(strategy.setup(StrategyRequirements()))
 
 
