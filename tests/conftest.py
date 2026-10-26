@@ -1,3 +1,4 @@
+import asyncio
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -5,7 +6,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from robottraderslab.exchanges import FuturesExchangeProtocol
+from robottraderslab.exchanges import FuturesExchangeProtocol, Instrument
 from robottraderslab.strategies import Balance, TradingMode, TradingSystem
 from robottraderslab.strategies.futures import (
     FuturesAccount,
@@ -31,6 +32,13 @@ def mock_exchange() -> Mock:
         symbol: MarginSettings(leverage=None, margin_mode=MarginMode.CROSS)
         for symbol in symbols
     }
+    exchange.get_instrument.return_value = Instrument(
+        quantity_step=1e-8,
+        minimum_order_value=None,
+        maximum_leverage=None,
+        maximum_order_quantity=None,
+        maximum_market_order_quantity=None,
+    )
     return exchange
 
 
@@ -45,11 +53,15 @@ def make_strategy(
         trading_mode: TradingMode = TradingMode.BACKTEST,
     ) -> ImpulseStrategy:
         account = FuturesAccount(exchange=mock_exchange, name="test")
-        return ImpulseStrategy(
+        strategy = ImpulseStrategy(
             account=account,
             trading_system=TradingSystem(trading_mode=trading_mode),
             config_dir=Path("bot-config-dir"),
             profiles=profiles,
         )
+        asyncio.run(
+            account._read_instruments({profile.symbol for profile in strategy.profiles})
+        )
+        return strategy
 
     return _make

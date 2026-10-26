@@ -1,6 +1,6 @@
 import pytest
 
-from robottraderslab.exceptions import StrategyCriticalError
+from robottraderslab.exceptions import BotCriticalError
 from robottraderslab.indicators import MAType
 from robottraderslab.strategies.futures import (
     MarginMode,
@@ -53,7 +53,7 @@ class TestDirectionFlags:
         assert profile.short_only is True
 
     def test_contradictory_flags(self):
-        with pytest.raises(StrategyCriticalError, match="cannot both be true"):
+        with pytest.raises(BotCriticalError, match="cannot both be true"):
             ProfileConfig(
                 sizing=TotalBalanceRatio(1.0),
                 symbol="BTC/USDT:USDT",
@@ -100,7 +100,7 @@ class TestMATypeParameters:
         assert profile.trend_type is MAType.SMA
 
     def test_with_unknown_signal_type(self, make_strategy):
-        with pytest.raises(StrategyCriticalError, match="signal_type: Input should be"):
+        with pytest.raises(BotCriticalError, match="signal_type: Input should be"):
             make_strategy(
                 [
                     {
@@ -155,7 +155,7 @@ class TestStopLossPct:
 
     @pytest.mark.parametrize("stop_loss_pct", [-0.1, 0.0, 1.0, 1.5])
     def test_rejects_out_of_range(self, stop_loss_pct):
-        with pytest.raises(StrategyCriticalError, match="stop_loss_pct"):
+        with pytest.raises(BotCriticalError, match="stop_loss_pct"):
             ProfileConfig(
                 sizing=TotalBalanceRatio(1.0),
                 symbol="BTC/USDT:USDT",

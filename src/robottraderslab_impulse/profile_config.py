@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from functools import cached_property
 
-from robottraderslab.exceptions import StrategyCriticalError
+from robottraderslab.exceptions import BotCriticalError
 from robottraderslab.indicators import MAType
 from robottraderslab.strategies import Profile
 from robottraderslab.strategies.futures import (
@@ -42,16 +42,16 @@ class ProfileConfig(Profile, TrixParameters):
     def __post_init__(self) -> None:
         """
         Raises:
-            StrategyCriticalError: If both direction flags are set, or the
+            BotCriticalError: If both direction flags are set, or the
                 stop-loss is not a fraction of the entry price.
         """
         if self.long_only and self.short_only:
-            raise StrategyCriticalError(
+            raise BotCriticalError(
                 "long_only and short_only cannot both be true; leave both out to "
                 "trade both directions"
             )
         if self.stop_loss_pct is not None and not 0 < self.stop_loss_pct < 1:
-            raise StrategyCriticalError(
+            raise BotCriticalError(
                 f"stop_loss_pct must be in (0, 1), got {self.stop_loss_pct}"
             )
 
