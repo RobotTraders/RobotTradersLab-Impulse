@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository is archived. The Impulse strategy is now developed in the [`plugins/robottraderslab-impulse`](https://github.com/RobotTraders/RobotTradersLab/tree/main/plugins/robottraderslab-impulse) folder of [RobotTraders/RobotTradersLab](https://github.com/RobotTraders/RobotTradersLab), and released from there.
+
 # robottraderslab-impulse
 
 Trend following momentum strategy plugin for the RobotTradersLab engine, based on the TRIX indicator and registered under the name `impulse`.
